@@ -20,8 +20,8 @@ export function getSiteUrl() {
 export const site = {
   name: "Neil",
   author: "Neil",
-  title: "Neil — Full-stack developer",
-  titleTemplate: "%s — Neil",
+  title: "Welcome to my Brand Neil Studio",
+  titleTemplate: "%s — Neil Studio",
   description:
     "Neil builds fast, considered web applications — company sites, e-commerce stores and SaaS platforms.",
 };

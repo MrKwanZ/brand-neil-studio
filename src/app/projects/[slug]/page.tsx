@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getProject, projects } from "@/lib/projects";
+import { getProjectGallery } from "@/lib/project-gallery";
+import { ProjectGallery } from "@/components/ProjectGallery";
 import { TechIcon } from "@/components/TechIcon";
 
 type ProjectPageProps = {
@@ -42,6 +44,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const gallery = project.galleryFolder ? getProjectGallery(project.galleryFolder) : [];
+
   return (
     <article className="mx-auto max-w-4xl px-6 py-16">
       <Link
@@ -57,15 +61,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       <h1 className="mt-3 text-3xl font-semibold md:text-5xl">{project.title}</h1>
       <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.summary}</p>
 
-      <Image
-        src={project.image}
-        alt={`${project.title} landing page`}
-        width={1280}
-        height={800}
-        priority
-        sizes="(min-width: 896px) 896px, 100vw"
-        className="mt-10 w-full rounded-xl border border-border object-cover"
-      />
+      {gallery.length > 0 ? (
+        <ProjectGallery images={gallery} alt={`${project.title} screenshot`} />
+      ) : (
+        <Image
+          src={project.image}
+          alt={`${project.title} landing page`}
+          width={1280}
+          height={800}
+          priority
+          sizes="(min-width: 896px) 896px, 100vw"
+          className="mt-10 w-full rounded-xl border border-border bg-sand object-contain"
+        />
+      )}
 
       <div className="mt-14 grid gap-12 md:grid-cols-[2fr_1fr]">
         <div>
@@ -90,6 +98,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <TechIcon key={tech} tech={tech} />
             ))}
           </div>
+          <Link
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View source on GitHub"
+            className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Image src="/github.svg" alt="" width={20} height={20} aria-hidden />
+            View source
+          </Link>
         </aside>
       </div>
 

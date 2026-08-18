@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { AboutTimeline } from "@/components/AboutTimeline";
 
-const title = "About Neil — full-stack developer";
+const title = "What's Neil";
 const description =
   "Neil's journey from graduation in 2015 to building production web applications today.";
 

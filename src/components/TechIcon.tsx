@@ -3,13 +3,19 @@ import {
   SiReact,
   SiNextdotjs,
   SiNodedotjs,
+  SiExpress,
+  SiNestjs,
   SiMongodb,
   SiPostgresql,
-  SiTailwindcss,
-  SiStripe,
+  SiPaypal,
   SiDocker,
   SiGraphql,
+  SiPython,
+  SiFastapi,
+  SiLangchain,
+  SiLanggraph
 } from "react-icons/si";
+import { BsOpenai } from "react-icons/bs";
 import type { TechKey } from "@/lib/projects";
 
 const registry: Record<TechKey, { label: string; Icon: React.ElementType }> = {
@@ -17,12 +23,18 @@ const registry: Record<TechKey, { label: string; Icon: React.ElementType }> = {
   react: { label: "React", Icon: SiReact },
   nextjs: { label: "Next.js", Icon: SiNextdotjs },
   node: { label: "Node.js", Icon: SiNodedotjs },
+  nestjs: { label: "NestJS", Icon: SiNestjs },
+  express: { label: "Express", Icon: SiExpress },
   mongodb: { label: "MongoDB", Icon: SiMongodb },
   postgres: { label: "PostgreSQL", Icon: SiPostgresql },
-  tailwind: { label: "Tailwind CSS", Icon: SiTailwindcss },
-  stripe: { label: "Stripe", Icon: SiStripe },
+  paypal: { label: "PayPal", Icon: SiPaypal },
   docker: { label: "Docker", Icon: SiDocker },
   graphql: { label: "GraphQL", Icon: SiGraphql },
+  python: { label: "Python", Icon: SiPython },
+  fastapi: { label: "FastAPI", Icon: SiFastapi },
+  langchain: { label: "LangChain", Icon: SiLangchain },
+  langgraph: { label: "LangGraph", Icon: SiLanggraph },
+  openai: { label: "OpenAI", Icon: BsOpenai },
 };
 
 export function TechIcon({ tech }: { tech: TechKey }) {

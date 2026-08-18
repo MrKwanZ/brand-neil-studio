@@ -4,16 +4,22 @@ import ecommerceImg from "@/assets/project-ecommerce.jpg";
 import saasImg from "@/assets/project-saas.jpg";
 
 export type TechKey =
+  | "python"
+  | "fastapi"
+  | "langchain"
+  | "langgraph"
+  | "openai"
   | "typescript"
   | "react"
   | "nextjs"
   | "node"
+  | "express"
+  | "nestjs"
   | "mongodb"
   | "postgres"
-  | "tailwind"
-  | "stripe"
   | "docker"
-  | "graphql";
+  | "graphql"
+  | "paypal";
 
 export type Project = {
   slug: string;
@@ -25,50 +31,53 @@ export type Project = {
   image: StaticImageData;
   highlights: string[];
   tech: TechKey[];
+  githubUrl: string;
+  galleryFolder?: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "northwood-studio",
-    title: "Northwood Studio",
-    category: "Company website",
-    year: "2024",
-    summary:
-      "A warm, editorial marketing site for an architecture consultancy, built for speed and search.",
+    slug: "bestock-analyzer",
+    title: "Bestock Analyzer",
+    category: "Finance and Investment",
+    year: "2026",
+    summary: "A stock market analyzer for identifying top-performing NASDAQ stocks.",
     description:
-      "Northwood Studio needed a website that felt like their craft: calm, tactile and unmistakably human. I designed and built a fully static-rendered marketing site with a lightweight CMS so the team can publish case studies without a developer. Core Web Vitals land in the green across every page.",
+      "A stock market analyzer that finds the best performance of NASDAQ stock of the day. By analyzing market data, performing sentiment analysis, drafting performance charts, it helps you to decide whether you should buy or sell the stock.",
     image: companyImg,
     highlights: [
-      "Server-rendered pages with a 98 Lighthouse performance score",
-      "Editor-friendly content model for case studies and team profiles",
-      "Accessible, keyboard-complete navigation and forms",
+      "Simple and intuitive user interface for easy navigation",
+      "Email reporting for detailed stock analysis",
+      "Basic and advanced stock analysis at your choice",
     ],
-    tech: ["typescript", "react", "nextjs", "tailwind"],
+    tech: ["python", "fastapi", "langchain", "langgraph", "openai"],
+    githubUrl: "https://github.com/MrKwanZ/bestock-analyzer",
+    galleryFolder: "bestock",
   },
   {
-    slug: "kiln-and-clay",
-    title: "Kiln & Clay",
+    slug: "ncshop",
+    title: "NCShop",
     category: "E-commerce",
-    year: "2025",
-    summary:
-      "A handmade homeware store with a custom checkout, inventory sync and subscription boxes.",
+    year: "2020",
+    summary: "A full-featured e-commerce platform for selling products.",
     description:
-      "A full storefront for a ceramics maker moving off a rented platform. I built the catalogue, cart and checkout from scratch, wired Stripe for one-off and subscription orders, and added an admin panel for stock, orders and shipping labels. Order processing time dropped by roughly 60%.",
+      "A e-commerce platform for displaying and selling products online . I built the catalogue, cart and checkout from scratch, wired PayPal for one-off orders, and added an admin panel for stock, orders and shipping labels.",
     image: ecommerceImg,
     highlights: [
-      "Custom cart and Stripe checkout with subscription support",
+      "Custom cart and PayPal checkout support",
       "Real-time inventory sync between storefront and admin",
       "Order dashboard with fulfilment and refund flows",
     ],
-    tech: ["typescript", "react", "node", "mongodb", "stripe"],
+    tech: ["react", "express", "node", "mongodb", "paypal"],
+    githubUrl: "https://github.com/MrKwanZ/ncshop",
+    galleryFolder: "ncshop",
   },
   {
-    slug: "cadence-analytics",
-    title: "Cadence Analytics",
-    category: "SaaS platform",
-    year: "2026",
-    summary:
-      "A multi-tenant analytics platform with role-based access, billing and live dashboards.",
+    slug: "socialogy",
+    title: "Socialogy",
+    category: "Social Media",
+    year: "2025",
+    summary: "A social media platform for sharing and discovering content.",
     description:
       "Cadence turns messy product events into dashboards a founder can read in a minute. I led the front-end architecture and a large part of the API: multi-tenant data isolation, role-based permissions, usage-based billing and streaming chart updates over websockets, all running on a horizontally scalable backend.",
     image: saasImg,
@@ -77,7 +86,8 @@ export const projects: Project[] = [
       "Usage-based billing and self-serve plan upgrades",
       "Live dashboards streaming thousands of events per minute",
     ],
-    tech: ["typescript", "react", "node", "postgres", "graphql", "docker"],
+    tech: ["typescript", "react", "nestjs", "postgres", "graphql", "docker"],
+    githubUrl: "https://github.com/MrKwanZ/socialogy",
   },
 ];
 

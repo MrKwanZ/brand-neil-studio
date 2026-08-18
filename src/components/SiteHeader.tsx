@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -43,8 +44,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <Link href="/" className="font-display text-lg font-semibold tracking-tight">
-          Neil
+        <Link href="/">
+          <Image src="/neil-notion.png" alt="Neil" width={200} height={200} className="h-16 w-16" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm md:flex" aria-label="Primary">

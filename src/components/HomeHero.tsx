@@ -39,7 +39,7 @@ export function HomeHero() {
           }}
           className="mt-5 max-w-md text-lg text-muted-foreground"
         >
-          I am a full-stack developer.
+          I am a full-stack web developer, an automation specialist, and a coffee lover.
         </motion.p>
 
         <motion.div
@@ -67,7 +67,7 @@ export function HomeHero() {
           </Link>
         </motion.div>
 
-        <motion.p
+        {/* <motion.p
           variants={fadeUp}
           initial={shouldAnimate ? "hidden" : false}
           animate="visible"
@@ -79,7 +79,7 @@ export function HomeHero() {
           className="mt-8 inline-flex items-center rounded-full border border-border bg-sand px-3 py-1 text-xs tracking-wide text-secondary-foreground uppercase"
         >
           Available for freelance work
-        </motion.p>
+        </motion.p> */}
       </div>
 
       <div className="relative">

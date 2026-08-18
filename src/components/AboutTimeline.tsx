@@ -7,34 +7,34 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const timeline = [
   {
-    period: "2015",
-    title: "BSc Computer Science",
-    org: "Ashgrove University",
-    body: "Graduated with honours, a dissertation on real-time collaboration and a stubborn love for clean interfaces.",
+    period: "2013 - 2015",
+    title: "Higher Diploma in Computer Systems Administration",
+    org: "Hong Kong Institute of Vocational Education",
+    body: "Graduated with a collaborative project on a web application development about wedding planning with a stubborn love for clean interfaces.",
   },
   {
     period: "2015 — 2017",
-    title: "Junior Web Developer",
-    org: "Timberline Digital",
-    body: "Built marketing sites and internal tools for small businesses. Learned to ship, test and take feedback without ego.",
+    title: "Technical Associate",
+    org: "PCCW Solutions Limited",
+    body: "Built a high-traffic online examination registration system and a banking application for government and private sectors. Learned to ship, test and take feedback without ego.",
   },
   {
-    period: "2017 — 2020",
-    title: "Full-Stack Developer",
-    org: "Harborlight Commerce",
-    body: "Owned checkout and catalogue for a growing e-commerce platform. Cut page load times in half and rebuilt the admin suite.",
+    period: "2017 — 2018",
+    title: "Programmer",
+    org: "Information Services Department, HKSARG",
+    body: "Maintained and developed government websites for various government departments. Optimized page accessibility and sustained a 99+ website uptime.",
   },
   {
-    period: "2020 — 2023",
-    title: "Senior Software Engineer",
-    org: "Northgate Systems",
-    body: "Led a small product team building multi-tenant SaaS. Introduced typed APIs, CI and a design system the whole company used.",
+    period: "2019 — 2020",
+    title: "Analyst Programmer",
+    org: "MGF Sourcing Far East, Limited",
+    body: "Built and maintain a web application and an ERP system for a global sourcing company. Streamlined business processes and improved system efficiency.",
   },
   {
-    period: "2023 — now",
-    title: "Independent Developer",
-    org: "Freelance",
-    body: "Partnering with founders and agencies to design and build web applications, using AI tooling to move from idea to production faster.",
+    period: "2020 — 2026",
+    title: "System Analyst",
+    org: "A.S. Watson Group",
+    body: "Delivered RPA solutions for multiple business units, supported Kong API Gateway and Confluent Kafka platforms for microservices architecture, and championed the adoption of GitHub Copilot. Improved manual document processing, ensured platform stability, and fostered a culture of AI-driven efficiency.",
   },
 ];
 
@@ -56,7 +56,7 @@ export function AboutTimeline() {
           transition={{ duration: shouldAnimate ? 0.7 : 0, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-2xl text-center text-3xl leading-tight font-semibold md:text-5xl"
         >
-          Greetings! My name is Neil.
+          Greetings! I'm Neil.
         </motion.h1>
         <motion.p
           initial={shouldAnimate ? { opacity: 0, y: 24 } : false}
@@ -68,9 +68,10 @@ export function AboutTimeline() {
           }}
           className="mt-6 max-w-xl text-center text-muted-foreground"
         >
-          I have spent the last decade turning rough ideas into web applications that people
-          actually use — from company sites to storefronts to data-heavy SaaS platforms. I care
-          about clarity, speed and code that the next developer can read.
+          I have spent the last decade turning rough ideas into web applications and automation
+          solutions that people actually use — from government websites, organizational web systems,
+          to automation solutions for business operations. I care about clarity, performance and
+          code that is easy to maintain.
         </motion.p>
 
         <motion.button
