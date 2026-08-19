@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactContent } from "@/components/ContactContent";
 
-const title = "Contact Neil";
+const title = "Neil Contact";
 const description = "Get in touch with Neil about building or improving your web application.";
 
 export const metadata: Metadata = {

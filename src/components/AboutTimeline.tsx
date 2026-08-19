@@ -69,7 +69,7 @@ export function AboutTimeline() {
           className="mt-6 max-w-xl text-center text-muted-foreground"
         >
           I have spent the last decade turning rough ideas into web applications and automation
-          solutions that people actually use — from government websites, organizational web systems,
+          solutions that people actually use — from government websites, corporate web systems,
           to automation solutions for business operations. I care about clarity, performance and
           code that is easy to maintain.
         </motion.p>
