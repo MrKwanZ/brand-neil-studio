@@ -1,7 +1,6 @@
 import type { StaticImageData } from "next/image";
 import companyImg from "@/assets/project-company.jpg";
 import ecommerceImg from "@/assets/project-ecommerce.jpg";
-import saasImg from "@/assets/project-saas.jpg";
 
 export type TechKey =
   | "python"
@@ -72,23 +71,23 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MrKwanZ/ncshop",
     galleryFolder: "ncshop",
   },
-  {
-    slug: "socialogy",
-    title: "Socialogy",
-    category: "Social Media",
-    year: "2025",
-    summary: "A social media platform for sharing and discovering content.",
-    description:
-      "Cadence turns messy product events into dashboards a founder can read in a minute. I led the front-end architecture and a large part of the API: multi-tenant data isolation, role-based permissions, usage-based billing and streaming chart updates over websockets, all running on a horizontally scalable backend.",
-    image: saasImg,
-    highlights: [
-      "Multi-tenant data isolation with row-level security",
-      "Usage-based billing and self-serve plan upgrades",
-      "Live dashboards streaming thousands of events per minute",
-    ],
-    tech: ["typescript", "react", "nestjs", "postgres", "graphql", "docker"],
-    githubUrl: "https://github.com/MrKwanZ/socialogy",
-  },
+  // {
+  //   slug: "socialogy",
+  //   title: "Socialogy",
+  //   category: "Social Media",
+  //   year: "2025",
+  //   summary: "A social media platform for sharing and discovering content.",
+  //   description:
+  //     "Cadence turns messy product events into dashboards a founder can read in a minute. I led the front-end architecture and a large part of the API: multi-tenant data isolation, role-based permissions, usage-based billing and streaming chart updates over websockets, all running on a horizontally scalable backend.",
+  //   image: saasImg,
+  //   highlights: [
+  //     "Multi-tenant data isolation with row-level security",
+  //     "Usage-based billing and self-serve plan upgrades",
+  //     "Live dashboards streaming thousands of events per minute",
+  //   ],
+  //   tech: ["typescript", "react", "nestjs", "postgres", "graphql", "docker"],
+  //   githubUrl: "https://github.com/MrKwanZ/socialogy",
+  // },
 ];
 
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);
