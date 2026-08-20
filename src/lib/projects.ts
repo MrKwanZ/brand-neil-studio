@@ -36,24 +36,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "bestock-analyzer",
-    title: "Bestock Analyzer",
-    category: "Finance and Investment",
-    year: "2026",
-    summary: "A stock market analyzer for identifying top-performing NASDAQ stocks.",
-    description:
-      "A stock market analyzer that finds the best performance of NASDAQ stock of the day. By analyzing market data, performing sentiment analysis, drafting performance charts, it helps you to decide whether you should buy or sell the stock.",
-    image: companyImg,
-    highlights: [
-      "Simple and intuitive user interface for easy navigation",
-      "Email reporting for detailed stock analysis",
-      "Basic and advanced stock analysis at your choice",
-    ],
-    tech: ["python", "fastapi", "langchain", "langgraph", "openai"],
-    githubUrl: "https://github.com/MrKwanZ/bestock-analyzer",
-    galleryFolder: "bestock",
-  },
-  {
     slug: "ncshop",
     title: "NCShop",
     category: "E-commerce",
@@ -70,6 +52,24 @@ export const projects: Project[] = [
     tech: ["react", "express", "node", "mongodb", "paypal"],
     githubUrl: "https://github.com/MrKwanZ/ncshop",
     galleryFolder: "ncshop",
+  },
+  {
+    slug: "bestock-analyzer",
+    title: "Bestock Analyzer",
+    category: "Finance and Investment",
+    year: "2026",
+    summary: "A stock market analyzer for identifying top-performing NASDAQ stocks.",
+    description:
+      "A stock market analyzer that finds the best performance of NASDAQ stock of the day. By analyzing market data, performing sentiment analysis, drafting performance charts, it helps you to decide whether you should buy or sell the stock.",
+    image: companyImg,
+    highlights: [
+      "Simple and intuitive user interface for easy navigation",
+      "Email reporting for detailed stock analysis",
+      "Basic and advanced stock analysis at your choice",
+    ],
+    tech: ["python", "fastapi", "langchain", "langgraph", "openai"],
+    githubUrl: "https://github.com/MrKwanZ/bestock-analyzer",
+    galleryFolder: "bestock",
   },
   // {
   //   slug: "socialogy",

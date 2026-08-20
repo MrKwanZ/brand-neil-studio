@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
@@ -38,6 +39,13 @@ const timeline = [
   },
 ];
 
+const availability = {
+  period: "2026 — now",
+  title: "Open to Work",
+  org: "Ready for new challenges",
+  body: "By equipping myself with the latest technologies, now I am ready to take on new challenges and help businesses grow.",
+};
+
 export function AboutTimeline() {
   const reduceMotion = useReducedMotion();
   const shouldAnimate = reduceMotion === false;
@@ -69,9 +77,9 @@ export function AboutTimeline() {
           className="mt-6 max-w-xl text-center text-muted-foreground"
         >
           I have spent the last decade turning rough ideas into web applications and automation
-          solutions that people actually use — from government websites, corporate web systems,
-          to automation solutions for business operations. I care about clarity, performance and
-          code that is easy to maintain.
+          solutions that people actually use — from government websites, corporate web systems, to
+          automation solutions for business operations. I care about clarity, performance and code
+          that is easy to maintain.
         </motion.p>
 
         <motion.button
@@ -107,6 +115,8 @@ export function AboutTimeline() {
             ))}
           </div>
         </div>
+
+        <AvailabilityItem item={availability} />
       </section>
     </>
   );
@@ -145,6 +155,36 @@ function TimelineItem({ item, index }: { item: (typeof timeline)[number]; index:
         <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
         <p className="text-sm text-clay">{item.org}</p>
         <p className="mt-3 text-sm text-muted-foreground">{item.body}</p>
+      </div>
+    </div>
+  );
+}
+
+function AvailabilityItem({ item }: { item: typeof availability }) {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.3);
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <div
+      ref={ref}
+      data-visible={visible || reduceMotion !== false ? "true" : "false"}
+      className="reveal mx-auto mt-20 max-w-xl text-center"
+    >
+      <p className="text-xs tracking-widest text-accent-foreground/70 uppercase">{item.period}</p>
+      <h2 className="mt-2 text-2xl font-semibold">{item.title}</h2>
+      <p className="text-sm text-clay">{item.org}</p>
+      <p className="mt-3 text-sm text-muted-foreground">{item.body}</p>
+      <div className="mt-8 rounded-xl border border-border bg-sand p-8 text-center">
+        <h3 className="text-2xl font-semibold">Have a role or project in mind?</h3>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Tell me about it — I usually reply within a day.
+        </p>
+        <Link
+          href="/contact"
+          className="mt-6 inline-flex rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          Get in touch
+        </Link>
       </div>
     </div>
   );
