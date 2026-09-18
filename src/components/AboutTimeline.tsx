@@ -33,7 +33,7 @@ const timeline = [
   },
   {
     period: "2020 — 2026",
-    title: "System Analyst",
+    title: "Technical Specialist",
     org: "A.S. Watson Group",
     body: "Delivered RPA solutions for multiple business units, supported Kong API Gateway and Confluent Kafka platforms for microservices architecture, and championed the adoption of GitHub Copilot. Improved manual document processing, ensured platform stability, and fostered a culture of AI-driven efficiency.",
   },
@@ -76,9 +76,9 @@ export function AboutTimeline() {
           }}
           className="mt-6 max-w-xl text-center text-muted-foreground"
         >
-          I have spent the last decade turning rough ideas into web applications and automation
-          solutions that people actually use — from government websites, corporate web systems, to
-          automation solutions for business operations. I care about clarity, performance and code
+          I have spent the last decade turning rough ideas into various solutions
+          that people actually use — from government websites, corporate web systems, to
+          automation processes for business operations. I care about clarity, performance and code
           that is easy to maintain.
         </motion.p>
 
