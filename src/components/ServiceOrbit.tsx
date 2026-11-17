@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 
 type Point = { x: number; y: number };
@@ -49,7 +49,7 @@ export function ServiceOrbit() {
       ref={ref}
       data-visible={visible ? "true" : "false"}
       className="service-orbit reveal pointer-events-none absolute inset-0 hidden lg:block"
-      style={{ "--reveal-delay": "0ms" }}
+      style={{ "--reveal-delay": "0ms" } as CSSProperties}
     >
       <svg ref={svgRef} className="h-full w-full" aria-hidden="true">
         <path d={path} pathLength="1" stroke="var(--arc)" strokeWidth="1.5" fill="none" />
