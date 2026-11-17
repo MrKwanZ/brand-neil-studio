@@ -16,6 +16,8 @@ const emptyForm = {
   challenge: "",
 };
 
+const visibleFields = ["name", "email", "projectType", "challenge"] as const;
+
 const sendErrorMessage =
   "Oops... something went wrong. Please try sending the message again later.";
 
@@ -50,7 +52,8 @@ export function ContactForm() {
 
       if (response.status === 400 && data.errors) {
         setErrors(data.errors);
-        return;
+        const hasVisibleError = visibleFields.some((field) => data.errors?.[field]?.length);
+        if (hasVisibleError) return;
       }
 
       if (!response.ok) {

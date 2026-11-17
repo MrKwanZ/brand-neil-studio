@@ -23,8 +23,10 @@ export function ExperienceBand() {
             Building scalable applications since 2015
           </h2>
           <p className="mt-4 max-w-170 text-pretty text-muted-foreground">
-            Hello, I'm Neil Cheng. <br />
-            Over the decade, I built applications for various corporates, mainly enterprise systems.
+            I'm Neil Cheng. Over the decade, I built applications for various corporates, mainly
+            enterprise systems. <br />
+            Scalable architecture, clean code, favorable user experience. These are a few of my
+            favorite things.
           </p>
           <Link
             href="https://github.com/MrKwanZ"

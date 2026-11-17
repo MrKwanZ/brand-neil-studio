@@ -13,17 +13,14 @@ export function ContactContent() {
             id="contact-heading"
             className="mt-4 max-w-170 text-4xl leading-10 font-medium text-balance md:text-5xl md:leading-none"
           >
-            Start a project inquiry
+            Start a conversation
           </h2>
           <div className="mt-4 max-w-170 space-y-4 text-pretty text-muted-foreground">
             <p>
-              Share your name, the kind of work, the current challenge, and the timeline you have in
-              mind.
+              Share your name, the kind of work, and the current challenge you are facing.
             </p>
             <p>
-              I read every note and reply personally, usually within a day. The first note is a
-              conversation, not a contract. If the work is a fit, the next step is a technical
-              review before any build starts.
+              I read every note and reply.
             </p>
           </div>
         </Reveal>

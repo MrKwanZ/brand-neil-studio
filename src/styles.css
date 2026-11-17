@@ -84,6 +84,14 @@ html {
   scroll-behavior: smooth;
 }
 
+[data-sonner-toaster] {
+  font-family: var(--font-sans);
+}
+
+[data-sonner-toast][data-mounted="true"][data-visible="true"]:not([data-removed="true"]) {
+  opacity: 1;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

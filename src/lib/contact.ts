@@ -21,7 +21,6 @@ export const contactSchema = z.object({
     .email("Please enter a valid email address."),
   projectType: z.enum(projectTypeValues, { message: "Please choose a project type." }),
   challenge: z.string().trim().min(1, "Please describe the current challenge."),
-  timeline: z.string().trim().min(1, "Please share the timeline you have in mind."),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
@@ -31,7 +30,6 @@ export type ContactFieldErrors = {
   email?: string[];
   projectType?: string[];
   challenge?: string[];
-  timeline?: string[];
 };
 
 export function projectTypeLabel(value: ProjectType) {

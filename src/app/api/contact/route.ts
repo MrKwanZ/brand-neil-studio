@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 500 });
   }
 
-  const { name, email, projectType, challenge, timeline } = parsed.data;
+  const { name, email, projectType, challenge } = parsed.data;
   const typeLabel = projectTypeLabel(projectType);
   const resend = new Resend(apiKey);
 
@@ -48,12 +48,11 @@ export async function POST(request: Request) {
     to: CONTACT_TO_EMAIL,
     replyTo: email,
     subject: `Project inquiry from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nProject type: ${typeLabel}\nTimeline: ${timeline}\n\n${challenge}`,
+    text: `Name: ${name}\nEmail: ${email}\nProject type: ${typeLabel}\n\n${challenge}`,
     html: `
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Project type:</strong> ${escapeHtml(typeLabel)}</p>
-      <p><strong>Timeline:</strong> ${escapeHtml(timeline)}</p>
       <p>${escapeHtml(challenge).replaceAll("\n", "<br />")}</p>
     `,
   });
