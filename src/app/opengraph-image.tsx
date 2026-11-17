@@ -17,27 +17,29 @@ export default function OpenGraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: "#f7f1e8",
-        color: "#3d2b1f",
+        backgroundColor: "#F3F0EE",
+        color: "#141413",
         padding: "72px",
-        fontFamily: "Georgia, serif",
+        fontFamily: "ui-sans-serif, system-ui, sans-serif",
       }}
     >
       <div
         style={{
           display: "flex",
-          fontSize: 28,
-          letterSpacing: "0.28em",
+          fontSize: 24,
+          fontWeight: 700,
+          letterSpacing: "0.08em",
           textTransform: "uppercase",
-          color: "#b0724a",
         }}
       >
         Neil
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ fontSize: 76, lineHeight: 1.05, fontWeight: 700 }}>Full-stack developer</div>
-        <div style={{ fontSize: 28, color: "#6b5848", maxWidth: 820, lineHeight: 1.4 }}>
-          Fast, considered web applications for companies, shops and SaaS teams.
+        <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 500, letterSpacing: "-0.02em" }}>
+          Technical consultancy for products and codebases
+        </div>
+        <div style={{ fontSize: 28, color: "#555555", maxWidth: 860, lineHeight: 1.4 }}>
+          Diagnosis, full stack delivery, and codebase refactoring.
         </div>
       </div>
     </div>,

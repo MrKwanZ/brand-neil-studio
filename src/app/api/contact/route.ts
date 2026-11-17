@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { contactSchema } from "@/lib/contact";
+import { contactSchema, projectTypeLabel } from "@/lib/contact";
 
 const CONTACT_TO_EMAIL = process.env["CONTACT_TO_EMAIL"] ?? "neilhkcheng@gmail.com";
 const CONTACT_FROM_EMAIL =
@@ -39,19 +39,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 500 });
   }
 
-  const { name, email, message } = parsed.data;
+  const { name, email, projectType, challenge, timeline } = parsed.data;
+  const typeLabel = projectTypeLabel(projectType);
   const resend = new Resend(apiKey);
 
   const { error } = await resend.emails.send({
     from: CONTACT_FROM_EMAIL,
     to: CONTACT_TO_EMAIL,
     replyTo: email,
-    subject: `New message from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    subject: `Project inquiry from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\nProject type: ${typeLabel}\nTimeline: ${timeline}\n\n${challenge}`,
     html: `
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p>${escapeHtml(message).replaceAll("\n", "<br />")}</p>
+      <p><strong>Project type:</strong> ${escapeHtml(typeLabel)}</p>
+      <p><strong>Timeline:</strong> ${escapeHtml(timeline)}</p>
+      <p>${escapeHtml(challenge).replaceAll("\n", "<br />")}</p>
     `,
   });
 

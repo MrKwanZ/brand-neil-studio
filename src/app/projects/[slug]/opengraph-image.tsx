@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getProject, projects } from "@/lib/projects";
+import { evidenceLabel, getProject, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -19,8 +19,8 @@ export default async function ProjectOpenGraphImage({
   const { slug } = await params;
   const project = getProject(slug);
   const title = project?.title ?? "Project";
-  const summary = project?.summary ?? "Selected work by Neil.";
-  const category = project ? `${project.category} · ${project.year}` : "Portfolio";
+  const summary = project?.summary ?? "Public work by Neil.";
+  const category = project ? `${evidenceLabel(project.kind)} · ${project.year}` : "Public work";
 
   return new ImageResponse(
     <div
@@ -30,21 +30,21 @@ export default async function ProjectOpenGraphImage({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: "#f7f1e8",
-        color: "#3d2b1f",
+        backgroundColor: "#F3F0EE",
+        color: "#141413",
         padding: "72px",
-        fontFamily: "Georgia, serif",
+        fontFamily: "ui-sans-serif, system-ui, sans-serif",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
-        <span style={{ letterSpacing: "0.28em", textTransform: "uppercase", color: "#b0724a" }}>
+        <span style={{ letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 700 }}>
           Neil
         </span>
-        <span style={{ color: "#6b5848" }}>{category}</span>
+        <span style={{ color: "#555555" }}>{category}</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 700 }}>{title}</div>
-        <div style={{ fontSize: 26, color: "#6b5848", maxWidth: 860, lineHeight: 1.4 }}>
+        <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 500 }}>{title}</div>
+        <div style={{ fontSize: 26, color: "#555555", maxWidth: 860, lineHeight: 1.4 }}>
           {summary}
         </div>
       </div>

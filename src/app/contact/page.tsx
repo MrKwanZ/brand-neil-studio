@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { ContactContent } from "@/components/ContactContent";
-
-const title = "Neil Contact";
-const description = "Get in touch with Neil about building or improving your web application.";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
-  alternates: { canonical: "/contact" },
+  title: { absolute: "Start a project" },
+  description: "Start a project with Neil.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/" },
 };
 
 export default function ContactPage() {
-  return <ContactContent />;
+  redirect("/#contact");
 }

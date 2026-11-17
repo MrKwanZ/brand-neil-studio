@@ -1,16 +1,23 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import type { ContactFieldErrors } from "@/lib/contact";
+import { Reveal } from "@/components/Reveal";
+import { projectTypeOptions, type ContactFieldErrors } from "@/lib/contact";
 
-const emptyForm = { name: "", email: "", message: "" };
+const emptyForm = {
+  name: "",
+  email: "",
+  projectType: "",
+  challenge: "",
+};
 
-const sendErrorMessage = "Oops... something went wrong. Please try sending the message again later.";
+const sendErrorMessage =
+  "Oops... something went wrong. Please try sending the message again later.";
 
 export function ContactForm() {
   const [form, setForm] = useState(emptyForm);
@@ -48,18 +55,18 @@ export function ContactForm() {
 
       if (!response.ok) {
         toast.error(sendErrorMessage, {
-          icon: <XCircle className="h-5 w-5 text-red-600" />,
+          icon: <XCircle className="h-5 w-5 text-destructive" />,
         });
         return;
       }
 
-      toast.success("Your message was sent successfully.", {
-        icon: <CheckCircle2 className="h-5 w-5 text-green-600" />,
+      toast.success("Message sent successfully.", {
+        icon: <CheckCircle2 className="h-5 w-5 text-foreground" />,
       });
       setForm(emptyForm);
     } catch {
       toast.error(sendErrorMessage, {
-        icon: <XCircle className="h-5 w-5 text-red-600" />,
+        icon: <XCircle className="h-5 w-5 text-destructive" />,
       });
     } finally {
       setIsSubmitting(false);
@@ -70,92 +77,138 @@ export function ContactForm() {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="space-y-5 rounded-xl border border-border bg-card p-7"
+      className="space-y-5 rounded-[40px] bg-card p-6 md:p-8"
+      aria-busy={isSubmitting}
     >
-      <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
-        <Input
-          id="name"
-          name="name"
-          autoComplete="name"
-          value={form.name}
-          aria-invalid={Boolean(errors.name)}
-          aria-describedby={errors.name ? "name-error" : undefined}
-          onChange={(event) => updateField("name", event.target.value)}
-          placeholder="Your name"
-          className={errors.name ? "border-destructive" : undefined}
-        />
-        {errors.name?.[0] ? (
-          <p id="name-error" className="text-sm text-destructive">
-            {errors.name[0]}
-          </p>
-        ) : null}
+      <div className="grid gap-5 md:grid-cols-2">
+        <Reveal>
+          <Field
+            id="name"
+            label="Name"
+            error={errors.name?.[0]}
+            value={form.name}
+            autoComplete="name"
+            placeholder="Your name"
+            onChange={(value) => updateField("name", value)}
+          />
+        </Reveal>
+        <Reveal delay={60}>
+          <Field
+            id="email"
+            label="Email"
+            type="text"
+            inputMode="email"
+            error={errors.email?.[0]}
+            value={form.email}
+            autoComplete="email"
+            placeholder="you@company.com"
+            onChange={(value) => updateField("email", value)}
+          />
+        </Reveal>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          name="email"
-          type="text"
-          inputMode="email"
-          autoComplete="email"
-          value={form.email}
-          aria-invalid={Boolean(errors.email)}
-          aria-describedby={errors.email ? "email-error" : undefined}
-          onChange={(event) => updateField("email", event.target.value)}
-          placeholder="you@company.com"
-          className={errors.email ? "border-destructive" : undefined}
-        />
-        {errors.email?.[0] ? (
-          <p id="email-error" className="text-sm text-destructive">
-            {errors.email[0]}
-          </p>
-        ) : null}
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="message">Message</Label>
-        <Textarea
-          id="message"
-          name="message"
-          rows={6}
-          value={form.message}
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
-          onChange={(event) => updateField("message", event.target.value)}
-          placeholder="What are you building?"
-          className={errors.message ? "border-destructive" : undefined}
-        />
-        {errors.message?.[0] ? (
-          <p id="message-error" className="text-sm text-destructive">
-            {errors.message[0]}
-          </p>
-        ) : null}
-      </div>
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          aria-busy={isSubmitting}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:pointer-events-none disabled:opacity-50"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Sending...
-            </>
-          ) : (
-            "Send message"
-          )}
-        </button>
-        <button
-          type="button"
-          onClick={onReset}
-          disabled={isSubmitting}
-          className="rounded-md border border-border px-5 py-3 text-sm font-medium transition-colors hover:bg-sand disabled:pointer-events-none disabled:opacity-50 sm:min-w-28"
-        >
-          Reset
-        </button>
-      </div>
+      <Reveal delay={120}>
+        <div className="space-y-2">
+          <Label htmlFor="projectType">Project type</Label>
+          <select
+            id="projectType"
+            name="projectType"
+            value={form.projectType}
+            aria-invalid={Boolean(errors.projectType)}
+            aria-describedby={errors.projectType ? "projectType-error" : undefined}
+            onChange={(event) => updateField("projectType", event.target.value)}
+            className={`field ${errors.projectType ? "border-destructive" : ""}`}
+          >
+            <option value="">Choose a project type</option>
+            {projectTypeOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {errors.projectType?.[0] ? (
+            <p id="projectType-error" className="text-sm text-destructive">
+              {errors.projectType[0]}
+            </p>
+          ) : null}
+        </div>
+      </Reveal>
+      <Reveal delay={180}>
+        <div className="space-y-2">
+          <Label htmlFor="challenge">Current challenge</Label>
+          <Textarea
+            id="challenge"
+            name="challenge"
+            rows={5}
+            value={form.challenge}
+            aria-invalid={Boolean(errors.challenge)}
+            aria-describedby={errors.challenge ? "challenge-error" : undefined}
+            onChange={(event) => updateField("challenge", event.target.value)}
+            placeholder="What is getting in the way?"
+            className={`min-h-32 rounded-[20px] border-foreground/45 bg-surface px-5 py-3 text-base shadow-none md:text-base ${errors.challenge ? "border-destructive" : ""}`}
+          />
+          {errors.challenge?.[0] ? (
+            <p id="challenge-error" className="text-sm text-destructive">
+              {errors.challenge[0]}
+            </p>
+          ) : null}
+        </div>
+      </Reveal>
+      <Reveal delay={300}>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button type="submit" disabled={isSubmitting} className="btn-primary flex-1">
+            {isSubmitting ? "Sending inquiry" : "Send inquiry"}
+          </button>
+          <button type="button" onClick={onReset} disabled={isSubmitting} className="btn-secondary">
+            Reset
+          </button>
+        </div>
+      </Reveal>
     </form>
+  );
+}
+
+function Field({
+  id,
+  label,
+  error,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  autoComplete,
+  inputMode,
+}: {
+  id: string;
+  label: string;
+  error?: string | undefined;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  type?: string;
+  autoComplete?: string;
+  inputMode?: "email" | "text";
+}) {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor={id}>{label}</Label>
+      <Input
+        id={id}
+        name={id}
+        type={type}
+        inputMode={inputMode}
+        autoComplete={autoComplete}
+        value={value}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        className={`field md:text-base ${error ? "border-destructive" : ""}`}
+      />
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-destructive">
+          {error}
+        </p>
+      ) : null}
+    </div>
   );
 }

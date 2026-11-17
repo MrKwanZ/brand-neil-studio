@@ -21,7 +21,7 @@ export const site = {
   name: "Neil",
   author: "Neil",
   title: "Brand Neil Studio",
-  titleTemplate: "%s — Neil Studio",
+  titleTemplate: "%s — Brand Neil Studio",
   description:
-    "Neil builds various applications — corporate websites, e-commerce stores and agentic AIs.",
+    "Neil helps teams diagnose systems, build full stack products, and refactor existing codebases.",
 };

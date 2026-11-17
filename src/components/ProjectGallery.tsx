@@ -66,11 +66,11 @@ export function ProjectGallery({ images, alt }: ProjectGalleryProps) {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="overflow-hidden rounded-xl border border-border">
+      <div className="shadow-lift overflow-hidden rounded-[40px]">
         <CarouselContent className="ml-0">
           {images.map((src, index) => (
             <CarouselItem key={src} className="pl-0">
-              <div className="relative aspect-[16/10] w-full bg-sand">
+              <div className="relative aspect-16/10 w-full bg-sand">
                 <Image
                   src={src}
                   alt={`${alt} ${index + 1}`}

@@ -13,7 +13,7 @@ import {
   SiPython,
   SiFastapi,
   SiLangchain,
-  SiLanggraph
+  SiLanggraph,
 } from "react-icons/si";
 import { BsOpenai } from "react-icons/bs";
 import type { TechKey } from "@/lib/projects";

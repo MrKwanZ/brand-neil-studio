@@ -1,20 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Sofia_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Toaster } from "@/components/ui/sonner";
 import { getSiteUrl, site } from "@/lib/site";
 import "../styles.css";
 
-const fraunces = Fraunces({
+const sofia = Sofia_Sans({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-sofia",
   display: "swap",
 });
 
@@ -57,11 +51,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${sofia.variable} js`}>
       <body>
         <div className="flex min-h-screen flex-col">
+          <a
+            href="#content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-60 focus:rounded-[20px] focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          <main id="content" tabIndex={-1} className="flex-1 pt-24 outline-none md:pt-28">
+            {children}
+          </main>
           <SiteFooter />
         </div>
         <Toaster />

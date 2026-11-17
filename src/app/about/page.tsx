@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { AboutTimeline } from "@/components/AboutTimeline";
-
-const title = "What's Neil";
-const description =
-  "Neil's journey from graduation in 2015 to building production web applications today.";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
-  alternates: { canonical: "/about" },
+  title: { absolute: "Experience" },
+  description: "Neil's path from production software to independent technical consultancy.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/" },
 };
 
 export default function AboutPage() {
-  return <AboutTimeline />;
+  redirect("/#experience");
 }
